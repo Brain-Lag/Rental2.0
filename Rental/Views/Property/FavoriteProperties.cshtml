@@ -1,0 +1,37 @@
+﻿@model List<Rental.Models.RealEstate>
+@{
+    int userId = ViewBag.UserID;
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function toggleDiv() {
+        var div = document.getElementById('hiddenDiv');
+        if (div.style.display === 'none') {
+            div.style.display = 'block';
+        } else {
+            div.style.display = 'none';
+        }
+    }
+</script>
+
+<h2>Избранная недвижимость</h2>
+
+
+<div class="estate-container">
+    @foreach (var property in Model)
+    {
+        <div class="card" id="@property.Code">
+            <div class="view-mode">
+                <h5 class="card-title">@property.Type</h5>
+                <p class="card-text address">@property.Address</p>
+                <p class="card-text description">@property.Description</p>
+                <p class="card-text price"><strong>Цена:</strong> @Math.Round(property.Price, 0)</p>
+            </div>
+        </div>
+    }
+</div>
+
+<button type="button" class="home-btn" onclick="window.location.href='@Url.Action("Index", "Home")'">Home</button>
+<button type="button" class="property-btn" onclick="window.location.href='@Url.Action("Index", "Property", new { userId = @userId })'">All Properties</button>
+<button type="button" class="clear-favorites-btn" onclick="window.location.href='@Url.Action("ClearFavorites", "Property")'">Очистить избранное</button>

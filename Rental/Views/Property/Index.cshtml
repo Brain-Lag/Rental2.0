@@ -1,0 +1,152 @@
+﻿@model List<Rental.Models.RealEstate>
+@{
+    int? userIdNullable = ViewBag.UserID as int?;
+    int userId = userIdNullable ?? 0;
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function toggleDiv() {
+        var div = document.getElementById('hiddenDiv');
+        if (div.style.display === 'none') {
+            div.style.display = 'block';
+        } else {
+            div.style.display = 'none';
+        }
+    }
+
+    function openEditModal(code) {
+        $.ajax({
+            url: '@Url.Action("Edit", "Property")/' + code,
+            type: 'GET',
+            success: function (data) {
+                $('#editModal .modal-body').html(data);
+                document.getElementById('editModal').style.display = 'block';
+                if (data) {
+                    $('#Type').val(data.type);
+                    $('#Address').val(data.address);
+                    $('#Description').val(data.description);
+                    $('#Price').val(data.price);
+                }
+
+            },
+            error: function () {
+                alert('Ошибка при загрузке данных.');
+            }
+        });
+    }
+
+    function submitEditForm() {
+        var form = $('#editForm');
+        $.ajax({
+            url: form.attr('action'),
+            type: 'POST',
+            data: form.serialize(),
+            success: function (data) {
+                if (data.success) {
+                    document.getElementById('editModal').style.display = 'none';
+                    location.reload();
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function () {
+                alert('Ошибка при сохранении данных.');
+            }
+        });
+    }
+
+    function closeModal() {
+        document.getElementById('editModal').style.display = 'none';
+    }
+
+    function addToFavorites(code, userId) {
+        $.ajax({
+            url: '@Url.Action("AddToFavorites", "Property")',
+            type: 'POST',
+            data: { code: code, userId: userId },
+            success: function (data) {
+                if (data.success) {
+                    alert('Добавлено в избранное');
+                } else {
+                    alert('Ошибка при добавлении в избранное');
+                }
+            },
+            error: function () {
+                alert('Ошибка при добавлении в избранное');
+            }
+        });
+    }
+</script>
+
+<div class="title-div">
+    <h2>Недвижимость доступная для аренды</h2>
+    <button type="button" class="add-btn" onclick="toggleDiv()"><strong>+</strong></button>
+</div>
+<div id="hiddenDiv" class="add-form">
+    @using (Html.BeginForm("AddEstate", "Property", FormMethod.Post))
+    {
+        <div class="property-container2">
+            <div class="form-group2">
+                <label for="Type">Тип недвижимости</label>
+                @Html.TextBox("Type", null, new { required = "required" })
+            </div>
+            <div class="form-group2">
+                <label for="Address">Адрес</label>
+                @Html.TextBox("Address", null, new { required = "required" })
+            </div>
+            <div class="form-group2">
+                <label for="Square">Площадь</label>
+                @Html.TextBox("Square", null, new { required = "required" })
+            </div>
+            <div class="form-group2">
+                <label for="Price">Цена</label>
+                @Html.TextBox("Price", null, new { required = "required" })
+            </div>
+            <div class="form-group2">
+                <label for="Description">Описание</label>
+                @Html.TextBox("Description", null ,new { required = "required" })
+            </div>
+            <div class="form-group2">
+                <label for="OwnerID">ID владельца</label>
+                @Html.TextBox("OwnerID", null, new { required = "required" })
+            </div>
+            <div class="form-group2">
+                <label for="Pledge">Сумма залога</label>
+                @Html.TextBox("Pledge", null, new { required = "required" })
+            </div>
+            <button type="submit" class="confirm-btn"><strong>✔</strong></button>
+        </div>
+    }
+</div>
+
+<div class="estate-container">
+    @foreach (var property in Model)
+    {
+        <div class="card" id="@property.Code">
+            <div class="view-mode">
+                <h5 class="card-title">@property.Type</h5>
+                <p class="card-text address">@property.Address</p>
+                <p class="card-text description">@property.Description</p>
+                <p class="card-text price"><strong>Цена:</strong> @Math.Round(property.Price, 0)</p>
+                <button onclick="openEditModal(@property.Code)" class="edit-btn" type="button">✏️</button>
+                <button class="favorite-btn" onclick="addToFavorites(@property.Code, @userId)">♡</button>
+            </div>
+        </div>
+    }
+</div>
+
+<button type="button" class="home-btn" onclick="window.location.href='@Url.Action("Index", "Home")'">Home</button>
+<button type="button" class="favorites-btn" onclick="window.location.href='@Url.Action("FavoriteProperties", "Property")'">Favorites</button>
+
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+            <button type="button" onclick="submitEditForm()">Сохранить</button>
+            <button type="button" onclick="closeModal()">Отмена</button>
+        </div>
+    </div>
+</div>

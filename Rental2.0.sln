@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rental", "Rental\Rental.csproj", "{97B96725-BE80-4635-93A5-64DFD39194D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rental2.0.Tests", "Rental2.0.Tests\Rental2.0.Tests.csproj", "{34E3D03E-CAD1-49B1-946E-36DC1B455B3C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97B96725-BE80-4635-93A5-64DFD39194D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97B96725-BE80-4635-93A5-64DFD39194D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97B96725-BE80-4635-93A5-64DFD39194D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97B96725-BE80-4635-93A5-64DFD39194D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34E3D03E-CAD1-49B1-946E-36DC1B455B3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34E3D03E-CAD1-49B1-946E-36DC1B455B3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34E3D03E-CAD1-49B1-946E-36DC1B455B3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34E3D03E-CAD1-49B1-946E-36DC1B455B3C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {56B1FB1A-8F1B-4AE4-B64F-FF292F3A70AA}
+	EndGlobalSection
+EndGlobal

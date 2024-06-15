@@ -1,0 +1,203 @@
+﻿header {
+    top: 0;
+    left: 0;
+    height: 7%;
+    width: 100%;
+    position: absolute;
+    background-color: lightgray;
+}
+
+body {
+    background-color: lightblue;
+}
+
+.reg-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+form {
+    display: inline-block;
+    text-align: left;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.reg-btn-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+
+.reg-btn {
+    background-color: lightgreen;
+    width: 150px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.log-btn {
+    background-color: lightsalmon;
+    width: 150px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.property-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    min-height: 225px;
+    min-width: 135px;
+    max-height: 225px;
+    max-width: 135px;
+    border: 3px solid black;
+    border-radius: 15%;
+    width: 20%;
+    background-color: ghostwhite;
+    margin-right: 5%;
+    margin-bottom: 3%;
+    padding: 10px;
+}
+
+    .card:hover {
+        box-shadow: royalblue 0px 0px 25px 5px inset;
+    }
+
+.estate-container {
+    display: flex;
+}
+
+.add-btn {
+    background-color: lightgreen;
+    color: black;
+    width: 50px;
+    height: 35px;
+    border-radius: 15%;
+    float: right;
+    margin-right: 5%;
+}
+
+.title-div {
+    margin-top: 200px;
+    display: inline;
+}
+
+.add-form {
+    display: none;
+}
+
+.form-group2 {
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.property-container2 {
+    float: left;
+    display: inline-block;
+    justify-content: left;
+}
+
+.confirm-btn {
+    background-color: lightgreen;
+    border-radius: 15%;
+    width: 50px;
+    height: 35px;
+    color: black;
+}
+/* Стили для модального окна */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 5px;
+}
+
+.modal-header, .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.modal-footer {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.close {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+    .close:hover {
+        background-color: #e53935;
+    }
+/**/
+.home-div {
+    margin-top: 5%;
+}
+
+.header-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout-btn {
+    float: right;
+}
