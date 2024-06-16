@@ -22,8 +22,25 @@ namespace Rental.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(int userID)
         {
+            var currentUser = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (currentUser == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            var user = await _appContext.User.FirstOrDefaultAsync(u => u.UserID == Convert.ToInt32(currentUser));
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             var properties = await _appContext.RealEstate.ToListAsync();
-            return View(properties);
+
+            if (user.UserRole == "user")
+            {
+                return RedirectToAction("UserPage", "Property");
+            }
+            else return View(properties);
+
+            //return View(properties);
         }
 
         [HttpPost]
@@ -93,6 +110,19 @@ namespace Rental.Controllers
                 return Json(new { success = false, message = "Ошибка при добавлении в избранное" });
             }
         }
+        [HttpPost("Property/DeleteProperty/{code:int}")]
+        public async Task<IActionResult> DeleteProperty(int code)
+        {
+            var property = await _appContext.RealEstate.FindAsync(code);
+            if (property == null)
+            {
+                return Json(new { success = false, message = "Property not found." });
+            }
+            _appContext.RealEstate.Remove(property);
+            await _appContext.SaveChangesAsync();
+            return Json(new { success = true });
+
+        }
         [Authorize]
         public async Task<IActionResult> ClearFavorites()
         {
@@ -157,6 +187,13 @@ namespace Rental.Controllers
                 }
             }
             return Json(new { success = false, message = "Некорректные данные." });
+        }
+
+        public async Task<IActionResult> UserPage()
+        {
+            var properties = await _appContext.RealEstate.ToListAsync();
+
+            return View(properties);
         }
         private bool PropertyExists(int code)
         {

@@ -9,5 +9,6 @@ namespace Rental.Models
         public string? UserEmail { get; set; }
         public string? UserPassword { get; set; }
         public DateTime UserRegDate { get; set; }
+        public string? UserRole { get; set; }
     }
 }

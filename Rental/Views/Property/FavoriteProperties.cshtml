@@ -21,17 +21,19 @@
 <div class="estate-container">
     @foreach (var property in Model)
     {
-        <div class="card" id="@property.Code">
-            <div class="view-mode">
-                <h5 class="card-title">@property.Type</h5>
-                <p class="card-text address">@property.Address</p>
-                <p class="card-text description">@property.Description</p>
-                <p class="card-text price"><strong>Цена:</strong> @Math.Round(property.Price, 0)</p>
+        <div class="product-inner" id="@property.Code">
+            <div class="product-wrap">
+                <div class="product-info">
+                    <h3 class="product-title">@property.Type</h3>
+                    <p class="product-title">@property.Address</p>
+                    <p class="product-title">@property.Description</p>
+                    <p class="price"><strong>Цена:</strong> @Math.Round(property.Price, 0) ₽</p>
+                </div>
             </div>
         </div>
     }
 </div>
 
-<button type="button" class="home-btn" onclick="window.location.href='@Url.Action("Index", "Home")'">Home</button>
-<button type="button" class="property-btn" onclick="window.location.href='@Url.Action("Index", "Property", new { userId = @userId })'">All Properties</button>
-<button type="button" class="clear-favorites-btn" onclick="window.location.href='@Url.Action("ClearFavorites", "Property")'">Очистить избранное</button>
+<button type="button" class="index-btn" onclick="window.location.href='@Url.Action("Index", "Home")'">На главную</button>
+<button type="button" class="index-btn" onclick="window.location.href='@Url.Action("Index", "Property", new { userId = @userId })'">Просмотреть недвижимость</button>
+<button type="button" class="index-btn" onclick="window.location.href='@Url.Action("ClearFavorites", "Property")'">Очистить избранное</button>

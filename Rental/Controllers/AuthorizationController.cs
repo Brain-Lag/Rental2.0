@@ -35,14 +35,14 @@ namespace Rental.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            (bool, string) loginResult = _accountService.Login(model);
+            (bool isAuthenticated, string userId) = _accountService.Login(model);
 
-            if (!loginResult.Item1) return BadRequest("Неверный логин или пароль.");
+            if (!isAuthenticated) return BadRequest("Неверный логин или пароль.");
 
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, model.UserName!),
-                new Claim(ClaimTypes.NameIdentifier, loginResult.Item2!)
+                new Claim(ClaimTypes.Name, model.UserName),
+                new Claim(ClaimTypes.NameIdentifier, userId)
             };
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

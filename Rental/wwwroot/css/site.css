@@ -98,6 +98,9 @@ footer {
 
 .estate-container {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .add-btn {
@@ -137,6 +140,7 @@ footer {
     height: 35px;
     color: black;
 }
+
 /* Стили для модального окна */
 .modal {
     display: none;
@@ -200,4 +204,116 @@ footer {
 
 .logout-btn {
     float: right;
+}
+
+.index-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.index-btn:hover{
+    background-color: #2980b9;
+}
+
+.actions {
+    border-radius:0 0 15% 15%;
+    position: absolute;
+    left: 0;
+    bottom: 50%;
+    margin-left:0.2px;
+    width: 99.9%;
+    background: rgba(59, 62, 67, 0.75);
+    transition: .3s linear;
+    display: flex;
+    justify-content: space-around;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.product-inner:hover .actions {
+    bottom: 0;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.actions a {
+    border-radius: 0 0 15% 15%;
+    text-decoration: none;
+    float: left;
+    width: 33.33333333333333%;
+    color: white;
+    padding: 15px 0;
+    transition: .2s linear;
+}
+    .actions a:hover {
+        background: rgba(59, 62, 67, 0.85);
+    }
+    .actions a:before {
+        font-family: "FontAwesome";
+    }
+
+.edit:before {
+    content: "✏️";
+}
+.wishlist:before {
+    content: "♡";
+}
+.delete:before {
+    content: "🗑️";
+}
+.product-inner {
+    padding:10px;
+    border-radius: 10%;
+    min-width: 175px;
+    min-height: 225px;
+    max-width: 150px;
+    max-height: 225px;
+    background: white;
+    text-align: center;
+    border: 5px solid #ebebec;
+    transition: .2s linear;
+    margin-right: 2%;
+    margin-bottom: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative; /* Добавлено относительное позиционирование */
+}
+    .product-inner:hover {
+        border-color: #bca480;
+    }
+        .product-inner:hover .actions {
+            bottom: 0%;
+        }
+.product-wrap {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.product-info {
+    margin-top:25%;
+    padding-bottom: 10px;
+    font-family: 'Noto Sans', sans-serif;
+}
+.product-title {
+    margin: 0 0 10px 0;
+    font-family: 'Noto Sans', sans-serif;
+    color: #1e1e1e;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.price {
+    font-weight: bold;
+    color: #bca480;
+}
+* {
+    box-sizing: border-box;
 }

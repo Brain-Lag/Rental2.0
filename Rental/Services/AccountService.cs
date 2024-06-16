@@ -27,7 +27,8 @@ public class AccountService
             UserRegDate = DateTime.UtcNow,
             UserName = user.UserName,
             UserEmail = user.UserEmail,
-            UserPassword = EncryptPassword(user.UserPassword!)
+            UserPassword = EncryptPassword(user.UserPassword!),
+            UserRole = "user"
         };
 
         await _context.User.AddAsync(account);

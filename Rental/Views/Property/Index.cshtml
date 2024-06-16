@@ -77,6 +77,29 @@
             }
         });
     }
+    function deleteProperty(code) {
+        if (confirm("Вы уверены?")) {
+            $.ajax({
+                url: '@Url.Action("DeleteProperty", "Property")/' + code,
+                type: 'POST',
+                data: { id: code },
+                headers: {
+                    'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                },
+                success: function (data) {
+                    if (data.success) {
+                        alert('Недвижимость удалена');
+                        window.location.reload();
+                    } else {
+                        alert('Ошибка при удалении недвижимости');
+                    }
+                },
+                error: function () {
+                    alert('Ошибка при удалении недвижимости');
+                }
+            });
+        }
+    }
 </script>
 
 <div class="title-div">
@@ -123,21 +146,26 @@
 <div class="estate-container">
     @foreach (var property in Model)
     {
-        <div class="card" id="@property.Code">
-            <div class="view-mode">
-                <h5 class="card-title">@property.Type</h5>
-                <p class="card-text address">@property.Address</p>
-                <p class="card-text description">@property.Description</p>
-                <p class="card-text price"><strong>Цена:</strong> @Math.Round(property.Price, 0)</p>
-                <button onclick="openEditModal(@property.Code)" class="edit-btn" type="button">✏️</button>
-                <button class="favorite-btn" onclick="addToFavorites(@property.Code, @userId)">♡</button>
+        <div class="product-inner" id="@property.Code">
+            <div class="product-wrap">
+                <div class="product-info">
+                    <h3 class="product-title">@property.Type</h3>
+                    <p class="product-title">@property.Address</p>
+                    <p class="product-title">@property.Description</p>
+                    <p class="price"><strong>Цена:</strong> @Math.Round(property.Price, 0) ₽</p>
+                </div>
+            </div>
+            <div class="actions">
+                <a class="edit" onclick="openEditModal(@property.Code)"></a>
+                <a class="wishlist" onclick="addToFavorites(@property.Code, @userId)"></a>
+                <a class="delete" onclick="deleteProperty(@property.Code)"></a>
             </div>
         </div>
     }
 </div>
 
-<button type="button" class="home-btn" onclick="window.location.href='@Url.Action("Index", "Home")'">Home</button>
-<button type="button" class="favorites-btn" onclick="window.location.href='@Url.Action("FavoriteProperties", "Property")'">Favorites</button>
+<button type="button" class="index-btn" onclick="window.location.href='@Url.Action("Index", "Home")'">На главную</button>
+<button type="button" class="index-btn" onclick="window.location.href='@Url.Action("FavoriteProperties", "Property")'">Избранное</button>
 
 <div id="editModal" class="modal">
     <div class="modal-content">
