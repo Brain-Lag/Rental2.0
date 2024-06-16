@@ -1,18 +1,53 @@
 ﻿<body>
     <header align="center">
-        <h1>Welcome to Real Estate Rental</h1>
+        <h1>Добро пожаловать в Real Estate Rental</h1>
     </header>
     <main>
-        <div class="home-div">
-            <p>Find your dream property with us!</p>
-            <p>Explore our available properties and start your rental journey today.</p>
+        <div class="home-div" align="center">
+            <h2>Найдите свою квартиру мечты вместе с нами!</h2>
+            <p>Исследуйте нашу доступную недвижимость и начните свое приключение в мир аренды уже сегодня.</p>
             <div>
                 <button type="button" class="index-btn" onclick="window.location.href='@Url.Action("Index", "Property")'">Просмотреть недвижимость</button>
                 <button type="button" class="index-btn" onclick="window.location.href='@Url.Action("Index", "About")'">О нас</button>
                 <button type="button" class="index-btn" onclick="window.location.href='@Url.Action("Index", "Contact")'">Свяжитесь с нами</button>
             </div>
         </div>
+        <section class="key-features">
+            <h2>Почему нам доверяют?</h2>
+            <div class="features-container">
+                <div class="feature">
+                    <img src="images/дом.png" alt="Feature 1" class="feature-img">
+                    <h3>Широкий выбор</h3>
+                    <p>Мы предлагаем широкий выбор недвижимости на любой вкус и бюджет.</p>
+                </div>
+                <div class="feature">
+                    <img src="images/агенты.png" alt="Feature 2" class="feature-img">
+                    <h3>Надежные агенты</h3>
+                    <p>Наши агенты — опытные профессионалы, которые готовы помочь вам на каждом этапе пути.</p>
+                </div>
+                <div class="feature">
+                    <img src="images/рукопожатие.png" alt="Feature 3" class="feature-img">
+                    <h3>Простой процесс</h3>
+                    <p>Мы делаем процесс аренды простым и беспроблемным.</p>
+                </div>
+            </div>
+        </section>
+        <section class="testimonials">
+            <h2>Что говорят наши клиенты</h2>
+            <div class="testimonial-container">
+                <div class="testimonial">
+                    <p>"Команда Real Estate Rental помогла мне быстро и легко найти квартиру моей мечты. Очень рекомендую!"</p>
+                    <p>- Сергей Земцов</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Отличный сервис и большой выбор недвижимости. Я нашла именно то, что искала."</p>
+                    <p>- Надежда Иванова</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Профессиональный и дружелюбный персонал. Они сделали процесс аренды простым и приятным."</p>
+                    <p>- Тимур Салахутдинов</p>
+                </div>
+            </div>
+        </section>
     </main>
-    <footer>
-    </footer>
 </body>

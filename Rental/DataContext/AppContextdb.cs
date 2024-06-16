@@ -15,6 +15,8 @@ namespace Rental
         public DbSet<Tenant> Tenant { get; set; } = null!;
         public DbSet<RealEstate> RealEstate { get; set; } = null!;
         public DbSet<Favorite> Favorite { get; set; }
-
+        public DbSet<LeaseContract> Lease { get; set; }
+        public DbSet<Owner> Owner { get; set; }
+        public DbSet<Review> Review { get; set; }
     }
 }

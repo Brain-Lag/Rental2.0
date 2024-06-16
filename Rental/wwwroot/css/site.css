@@ -7,8 +7,16 @@
     background-color: lightgray;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
 body {
     background-color: lightblue;
+    font-family: Arial, sans-serif;
 }
 
 .reg-body {
@@ -65,10 +73,19 @@ input {
 }
 
 footer {
-    position: absolute;
+    background-color: lightgray;
+    text-align: center;
+    padding: 10px 0;
     width: 100%;
+    position: relative;
     bottom: 0;
-    left: 0;
+}
+
+.footer-property {
+    position: absolute;
+    bottom: 0;
+    width:100%;
+    background-color: lightgray;
 }
 
 .property-container {
@@ -316,4 +333,141 @@ footer {
 }
 * {
     box-sizing: border-box;
+}
+
+/* Key Features Section */
+.key-features {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 1200px;
+    text-align: center;
+}
+.features-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.feature {
+    margin: 10px;
+    max-width: 300px;
+    text-align: center;
+}
+.feature-img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Testimonials Section */
+.testimonials {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 1200px;
+    text-align: center;
+}
+.testimonial-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.testimonial {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 300px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.about-us {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+    .about-us img {
+        max-width: 50%;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+.our-mission, .our-values {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+.values-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.value {
+    margin: 10px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.contact-us {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+}
+.contact-form {
+    margin-top: 20px;
+}
+    .contact-form .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+    .contact-form label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .contact-form input, .contact-form textarea {
+        min-width:180px;
+        max-width:180px;
+        max-height:100px;
+        min-height:80px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+.submit-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+    .submit-btn:hover {
+        background-color: #2980b9;
+    }
+
+.contact-info {
+    margin-top: 20px;
+    text-align: left;
+}
+main {
+    flex: 1; /* Заставляет main занимать всё доступное пространство */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
